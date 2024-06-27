@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API=axios.create({baseURL:"http://localhost:5000"});
+const API=axios.create({baseURL:"https://recipeapp-y3ht.onrender.com"});
 export const signIn=(formData)=>API.post('/user/signin',formData);
 export const signUp=(formData)=>API.post('/user/signup',formData);
 export const google=(formData)=>API.post('/user/google',formData);
