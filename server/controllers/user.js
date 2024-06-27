@@ -74,14 +74,17 @@ export const getUser=async(req,res)=>{
 
 export const updateUser=async(req,res)=>{
     try {
+        console.log(req.body)
         const response=await User.findByIdAndUpdate(
             req.params.id,
             {
-                $set:{profilePhoto:req.body.profilePhoto}
+                $set:req.body
             },
             {new:true}
         )
-        const {password,...rest}=response;
+        console.log(response)
+        const {password,...rest}=response._doc;
+        console.log(rest);
         if(!response) return res.status(404).json({message:'User in not found'})
         return res.status(200).json(rest)
     } catch (error) {

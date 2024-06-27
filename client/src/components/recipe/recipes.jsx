@@ -20,7 +20,8 @@ const recipes = () => {
     const lastIndex = (page * postPerPage);
     const firstIndex = lastIndex - postPerPage;
     console.log(firstIndex,lastIndex);
-    setFilteredRecipe(recipes.slice(firstIndex, lastIndex)); 
+    setFilteredRecipe(recipes.slice(firstIndex, lastIndex));
+    console.log('bhai') 
     console.log(filteredRecipe)
   }, [page,recipes]);
 

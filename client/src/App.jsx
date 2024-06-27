@@ -7,6 +7,7 @@ import SignUp from "./components/SignUp";
 import RecipeDetails from "./components/recipe/RecipeDetails";
 import UpdateRecipe from "./components/recipe/updateRecipe";
 import Profile from "./components/Profile";
+import About from "./components/About";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/shareRecipes" element={<ShareRecipe/>}/>
         <Route path="/recipes" element={<Recipes/>}/>
+        <Route path="/about" element={<About/>}/>
         <Route path="/recipedetails/:id" element={<RecipeDetails/>}/>
         <Route path="/userProfile" element={<Profile/>}/>
         <Route path="/updateRecipe/:id" element={<UpdateRecipe/>}/>

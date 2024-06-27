@@ -27,13 +27,11 @@ const Navbar = ({textColor}) => {
   return (
     <div>
       <div className="my-5 w-full flex relative font-[10px]  p-5 rounded-lg ring-1 shadow-lg bg-primary ring-slate-200 items-center justify-between h-[4rem]">
-        <div className={`flex justify-between w-1/3 ${textColor} max-xl:hidden`}>
+        <div className={`flex justify-between w-1/3 ${textColor} max-xl:hidden text-[1.2rem] font-mono`}>
           <Link to="/">Home</Link>
           <Link to="/recipes">Recipes</Link>
-          <Link to="/">Shop</Link>
-          <Link to="/">Blogs</Link>
-          <Link to="/">Health</Link>
-          <Link to="/">About</Link>
+          <Link to="/shareRecipes">Share</Link>
+          <Link to="/about">About</Link>
         </div>
         <div onClick={handleSideToggle}>
           <IoMenu className={`${textColor} size-10 xl:hidden cursor-pointer` }/>
@@ -42,12 +40,16 @@ const Navbar = ({textColor}) => {
           {currentUser ? (
             <div className="w-2/3 h-full flex flex-col items-center">
               <button className="w-12 right-8 mx-2 flex items-center  font-semibold rounded-full">
+                {currentUser?.profilePhoto?(
                 <img
                   src={currentUser?.profilePhoto}
                   alt="Logo"
                   className="size-12 rounded-full bg-slate-200 text-black hover:ring-2 ring-green-50"
                   onClick={() => setToogle(!toogle)}
                 />
+                ):(
+                  <div className="size-12 rounded-full bg-red-600 text-white hover:ring-2 ring-green-50">{currentUser?.name?.charAt(0).toUpperCase()}</div>
+                )}
               </button>
               {toogle && <DropMenu />}
             </div>
@@ -75,17 +77,11 @@ const Navbar = ({textColor}) => {
             <Link to='/recipes'>
             <li className="ring-1 shadow-md shadow-orange-400 hover:bg-slate-400 p-2 rounded-lg text-[1.5rem] font-mono m-2 mb-0">Recipes</li>
             </Link>
-            <Link to='/'>
-            <li className="ring-1 shadow-md shadow-orange-400 hover:bg-slate-400 p-2 rounded-lg text-[1.5rem] font-mono m-2 mb-0">Shops</li>
+            <Link to='/shareRecipes'>
+            <li className="ring-1 shadow-md shadow-orange-400 hover:bg-slate-400 p-2 rounded-lg text-[1.5rem] font-mono m-2 mb-0">ShareRecipe</li>
             </Link>
-            <Link to='/'>
-            <li className="ring-1 shadow-md shadow-orange-400 hover:bg-slate-400 p-2 rounded-lg text-[1.5rem] font-mono m-2 mb-0">Blogs</li>
-            </Link>
-            <Link to='/'>
-            <li className="ring-1 shadow-md shadow-orange-400 hover:bg-slate-400 p-2 rounded-lg text-[1.5rem] font-mono m-2 mb-0">Health</li>
-            </Link>
-            <Link to='/'>
-            <li className="ring-1 shadow-md shadow-orange-400 hover:bg-slate-400 p-2 rounded-lg text-[1.5rem] font-mono m-2 mb-0">ABout</li>
+            <Link to='/about'>
+            <li className="ring-1 shadow-md shadow-orange-400 hover:bg-slate-400 p-2 rounded-lg text-[1.5rem] font-mono m-2 mb-0">About</li>
             </Link>  
           </ul>
         </div>

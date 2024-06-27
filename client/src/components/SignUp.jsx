@@ -34,11 +34,11 @@ const SignUp = () => {
   }
   return (
     <div className="min-h-screen min-w-screen flex flex-row ">
-      <div className="w-1/2 flex justify-center items-center ">
+      <div className="w-1/2 flex justify-center items-center max-lg:hidden">
         <img src={auth} alt="" className="w-full h-full p-12" />
       </div>
-      <div className="w-[50rem] flex justify-center items-center bg-slate-50">
-        <div className="bg-white w-1/2 flex justify-center flex-col p-4 space-y-3 rounded-lg ring-1">
+      <div className="w-1/2 flex justify-center items-center bg-slate-50 max-lg:w-full">
+        <div className="bg-white w-1/2 flex justify-center flex-col p-4 space-y-3 rounded-lg ring-1 max-md:w-3/4 ">
           <h1 className="text-center font-semibold text-lg ">
             {toogle ? "SignUp" : "SignIn"}
           </h1>

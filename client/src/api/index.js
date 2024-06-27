@@ -5,7 +5,7 @@ export const signIn=(formData)=>API.post('/user/signin',formData);
 export const signUp=(formData)=>API.post('/user/signup',formData);
 export const google=(formData)=>API.post('/user/google',formData);
 export const getUser=(id)=>API.get(`/user/getuser/${id}`);
-export const updateProfile=(id,profilePhoto)=>API.put(`/user/update/${id}`,{profilePhoto});
+export const updateProfile=(id,formdata)=>API.put(`/user/update/${id}`,formdata);
 
 export const createRecipes=(formData)=>API.post('/post/createpost',formData);
 export const fetchRecipes=()=>API.get('/post/getPosts');

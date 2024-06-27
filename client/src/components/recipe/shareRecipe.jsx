@@ -77,6 +77,7 @@ const shareRecipe = () => {
   };
   return (
     <>
+    {currentUser ? (
       <div className="m-6 p-6 ring-1 rounded-lg shadow-lg">
         <div className="" id="addAcv">
           <div className="">
@@ -214,6 +215,11 @@ const shareRecipe = () => {
           </div>
         </div>
       </div>
+    ):(
+      <div className="w-full h-full flex flex-center text-[1.4rem] font-mono ">
+        <p>Please Login to share Recipes</p>
+      </div>
+    )}
     </>
   );
 };
