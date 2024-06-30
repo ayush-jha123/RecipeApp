@@ -371,7 +371,7 @@ const Profile = () => {
           accepts="image/*"
           onChange={(e) => setImage(e.target.files[0])}
         />
-        <img src={logo} alt="" className="w-[13rem] rounded-full" />
+        <img src={currentUser?.profilePhoto} alt="" className="w-[13rem] rounded-full" />
       </div>
       </div>
       <div className="w-full  mt-[7rem] flex justify-center flex-col items-center">
