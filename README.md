@@ -27,7 +27,7 @@ Ready to start cooking? Check out the live app here:
 
 ## Screenshots
 
-![App Screenshot]([url=https://ibb.co/jk8YN5D][img]https://i.ibb.co/jk8YN5D/Screenshot-2024-07-02-162734.png[/img][/url])
+![App Screenshot](https://drive.google.com/file/d/1-yyqZ1b4PpP8rcSxOJs-uKfsw-bwhVPm/view?usp=sharing)
 
 
 ## 🛠 Skills
