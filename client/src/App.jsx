@@ -8,6 +8,9 @@ import RecipeDetails from "./components/recipe/RecipeDetails";
 import UpdateRecipe from "./components/recipe/updateRecipe";
 import Profile from "./components/Profile";
 import About from "./components/About";
+import TestimonialForm from './components/TestimonialForm';
+import TestimonialsPage from "./components/TestimonialsPage";
+
 
 const App = () => {
   return (
@@ -22,6 +25,8 @@ const App = () => {
         <Route path="/recipedetails/:id" element={<RecipeDetails/>}/>
         <Route path="/userProfile" element={<Profile/>}/>
         <Route path="/updateRecipe/:id" element={<UpdateRecipe/>}/>
+        <Route path="/feedback" element={<TestimonialForm />} />
+        <Route path="/testimonials" element={<TestimonialsPage />} />
       </Routes>
       </BrowserRouter>
     </div>

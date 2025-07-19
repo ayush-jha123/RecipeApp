@@ -27,10 +27,12 @@ const Navbar = ({textColor}) => {
   return (
     <div>
       <div className="my-5 w-full flex relative font-[10px]  p-5 rounded-lg ring-1 shadow-lg bg-primary ring-slate-200 items-center justify-between h-[4rem]">
-        <div className={`flex justify-between w-1/3 ${textColor} max-xl:hidden text-[1.2rem] font-mono`}>
+        <div className={`flex justify-between w-[40%] ${textColor} max-xl:hidden text-[1.2rem] font-mono`}>
           <Link to="/">Home</Link>
           <Link to="/recipes">Recipes</Link>
           <Link to="/shareRecipes">Share</Link>
+          <Link to="/feedback">Feedback</Link>
+          <Link to="/testimonials">Testimonials</Link>
           <Link to="/about">About</Link>
         </div>
         <div onClick={handleSideToggle}>
@@ -82,7 +84,13 @@ const Navbar = ({textColor}) => {
             </Link>
             <Link to='/about'>
             <li className="ring-1 shadow-md shadow-orange-400 hover:bg-slate-400 p-2 rounded-lg text-[1.5rem] font-mono m-2 mb-0">About</li>
-            </Link>  
+            </Link>
+            <Link to='/feedback'>
+            <li className="ring-1 shadow-md shadow-orange-400 hover:bg-slate-400 p-2 rounded-lg text-[1.5rem] font-mono m-2 mb-0">Feedback</li>
+            </Link>
+            <Link to='/testimonials'>
+            <li className="ring-1 shadow-md shadow-orange-400 hover:bg-slate-400 p-2 rounded-lg text-[1.5rem] font-mono m-2 mb-0">Testimonials</li>
+            </Link>
           </ul>
         </div>
       </div>}

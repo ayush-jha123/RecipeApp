@@ -1,6 +1,7 @@
 import { response } from "express";
 import post from "../models/post.js";
 import mongoose from "mongoose";
+import Testimonial from '../models/testimonial.js';
 
 export const createPost = async (req, res) => {
   const data = req.body;
@@ -14,8 +15,26 @@ export const createPost = async (req, res) => {
 
 export const getPosts = async (req, res) => {
   try {
-    const result = await post.find();
-    return res.status(200).json(result);
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
+
+    const totalPosts = await post.countDocuments();
+    const totalPages = Math.ceil(totalPosts / limit);
+
+    const result = await post.find()
+      .sort({ createdAt: -1 }) // Sort by newest first
+      .skip(skip)
+      .limit(limit);
+
+    return res.status(200).json({
+      posts: result,
+      currentPage: page,
+      totalPages: totalPages,
+      totalPosts: totalPosts,
+      hasNextPage: page < totalPages,
+      hasPrevPage: page > 1
+    });
   } catch (error) {
     res.status(500).json({ message: "something went wrong" });
   }
@@ -142,4 +161,75 @@ export const getUserPost=async(req,res)=>{
   }
 }
 
+export const searchPosts = async (req, res) => {
+  try {
+    const { query } = req.query;
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
+
+    if (!query) {
+      return res.status(400).json({ message: "Search query is required" });
+    }
+
+    const searchRegex = new RegExp(query, 'i');
+    
+    const totalPosts = await post.countDocuments({
+      $or: [
+        { title: searchRegex },
+        { tags: { $in: [searchRegex] } },
+        { name: searchRegex }
+      ]
+    });
+    
+    const totalPages = Math.ceil(totalPosts / limit);
+
+    const result = await post.find({
+      $or: [
+        { title: searchRegex },
+        { tags: { $in: [searchRegex] } },
+        { name: searchRegex }
+      ]
+    })
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
+
+    return res.status(200).json({
+      posts: result,
+      currentPage: page,
+      totalPages: totalPages,
+      totalPosts: totalPosts,
+      hasNextPage: page < totalPages,
+      hasPrevPage: page > 1,
+      searchQuery: query
+    });
+  } catch (error) {
+    res.status(500).json({ message: "something went wrong" });
+  }
+};
+
 // {title: 'test', message: 'test', selectedFile: '', recipeProcess: '', name: 'Ayush Kumar Jha'}
+
+export const addTestimonial = async (req, res) => {
+  try {
+    const { name, message, avatar } = req.body;
+    if (!name || !message) {
+      return res.status(400).json({ message: 'Name and message are required.' });
+    }
+    const testimonial = new Testimonial({ name, message, avatar });
+    await testimonial.save();
+    return res.status(201).json(testimonial);
+  } catch (error) {
+    res.status(500).json({ message: 'Something went wrong.' });
+  }
+};
+
+export const getTestimonials = async (req, res) => {
+  try {
+    const testimonials = await Testimonial.find().sort({ date: -1 });
+    return res.status(200).json(testimonials);
+  } catch (error) {
+    res.status(500).json({ message: 'Something went wrong.' });
+  }
+};

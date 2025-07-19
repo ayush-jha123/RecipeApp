@@ -107,7 +107,7 @@ const About = () => {
             kitchen be filled with the aromas of your culinary masterpieces!
           </p>
         </div>
-        <div className="w-full flex flex-col gap-2 mt-4">
+        {/* <div className="w-full flex flex-col gap-2 mt-4">
           <h1 className="text-[2rem] font-serif">Feedback :-</h1>
           <textarea name="feedback" value={feedback} id="" placeholder="Your Valuable Feedback" className="h-24 ring-1 rounded-lg p-1" onChange={(e)=>setFeedback(e.target.value)} onKeyDown={event=>{
             if(event.key==='Enter'){
@@ -115,7 +115,7 @@ const About = () => {
             }
           }}/>
           <button onClick={handleSubmit} className="blue_btn">Send Feedback</button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
